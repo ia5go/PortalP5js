@@ -1,8 +1,10 @@
 html {
-  font-size: 100%;
+  font-size: 16px;
 }
 
 body {
+  font-family: "Times New Roman", Times, sans-serif;
+  font-weight: 400;
   display: grid;
   grid-template-areas:
     "header"
@@ -12,14 +14,18 @@ body {
 }
 
 h1 {
-  font-size: 8rem;
-  line-height: 1.6;
+  font-size: 10rem;
+  line-height: 1.4;
+  color: #ed225d;
 }
+
 h2 {
-  font-size: 2.5rem;
+  font-size: 4rem;
+  line-height: 1.4;
 }
+
 p {
-  font-size: 1rem;
+  font-size: 1.5rem;
   line-height: normal;
 }
 

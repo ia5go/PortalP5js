@@ -34,7 +34,16 @@ Nesta etapa do projeto estou criando o layout sem dependencias de fonte de dado 
     color: #ed225d;
     }
 
+### Execuação do Layout
+
+#### Geral
+
+- Para o layout do decidi utilizar o css grid como ferramenta principal. Por ser uma ferramenta versátil, moderna e combinar com a forma que estou pensando esse portal.
+
 ## Ref
+
+- Execuação do Layout
+  https://developer.mozilla.org/pt-BR/docs/Web/CSS/grid
 
 - Fontes e cores
   https://developer.mozilla.org/pt-BR/docs/Learn/Common_questions/
