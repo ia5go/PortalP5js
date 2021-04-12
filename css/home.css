@@ -1,0 +1,43 @@
+html {
+  font-size: 16px;
+}
+
+body {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-rows: 100vh auto auto;
+}
+
+h1 {
+  font-size: 8rem;
+  line-height: 1.6;
+}
+h2 {
+  font-size: 2.5rem;
+}
+p {
+  font-size: 1rem;
+  line-height: normal;
+}
+
+header {
+  grid-area: header;
+  padding: 15vw;
+}
+
+main {
+  grid-area: main;
+  display: grid;
+  grid-template-rows: 80vh 80vh 80vh;
+}
+
+.painel {
+  padding: 5vw;
+}
+
+footer {
+  grid-area: footer;
+}
