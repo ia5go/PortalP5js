@@ -43,6 +43,7 @@ Nesta etapa do projeto estou criando o layout sem dependencias de fonte de dado 
 ## Ref
 
 - Execuação do Layout
+  https://wordpress.tv/2017/06/30/morten-rand-hendriksen-css-grid-changes-everything-about-web-layouts/ (como referenciar esse link?)
   https://developer.mozilla.org/pt-BR/docs/Web/CSS/grid
 
 - Fontes e cores

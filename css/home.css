@@ -25,13 +25,13 @@ h2 {
 }
 
 p {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   line-height: normal;
 }
 
 header {
   grid-area: header;
-  padding: 15vw;
+  padding: 15vh;
 }
 
 main {
@@ -42,8 +42,13 @@ main {
 
 .painel {
   padding: 5vw;
+  display: grid;
+  grid-template-areas:
+    "titulo"
+    "texto";
 }
 
-footer {
-  grid-area: footer;
+main :nth-of-type(2) {
+  /* https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-of-type */
+  background-color: WhiteSmoke;
 }

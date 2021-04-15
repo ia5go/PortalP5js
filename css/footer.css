@@ -1,0 +1,12 @@
+/*documento específico para o footer que será igual em todas as páginas*/
+footer {
+  grid-area: footer;
+  display: grid;
+  justify-items: center;
+  padding: 30px;
+  background-color: WhiteSmoke;
+}
+
+footer p {
+  font-size: 1rem;
+}
