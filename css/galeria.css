@@ -1,0 +1,79 @@
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Times New Roman", Times, sans-serif;
+  font-weight: 400;
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-rows: auto auto auto;
+}
+
+h1 {
+  font-size: 6rem;
+  line-height: 1.4;
+  color: #ed225d;
+}
+
+h2 {
+  font-size: 3rem;
+  line-height: 1.4;
+}
+
+p {
+  font-size: 1.3rem;
+  line-height: normal;
+}
+
+header {
+  grid-area: header;
+  padding: 15vh;
+}
+
+main {
+  grid-area: main;
+  display: grid;
+}
+/* Padrão do painel de projeto */
+.painel {
+  padding: 5vw;
+  display: grid;
+  grid-template-areas:
+    "titulo canvas"
+    "coments canvas"
+    "autor canvas";
+}
+
+.painel h2 {
+  grid-area: titulo;
+  justify-self: left;
+}
+
+.painel h3 {
+  grid-area: autor;
+  justify-self: left;
+}
+
+.painel p {
+  grid-area: coments;
+  justify-self: left;
+  align-self: center;
+}
+
+.painel iframe {
+  min-width: 400px;
+  min-height: 400px;
+  grid-area: canvas;
+  justify-self: left;
+  align-self: center;
+  justify-self: center;
+}
+
+main :nth-of-type(2) {
+  /* https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-of-type */
+  background-color: WhiteSmoke;
+}
