@@ -23,6 +23,9 @@ h2 {
   font-size: 3rem;
   line-height: 1.4;
 }
+h3 {
+  font-size: 2rem;
+}
 
 p {
   font-size: 1.3rem;
@@ -40,7 +43,10 @@ main {
 }
 /* Padrão do painel de projeto */
 .painel {
-  padding: 5vw;
+  margin: 2vw;
+  padding: 2vw;
+  border: solid 1px #ed225d;
+  border-radius: 15px;
   display: grid;
   grid-template-areas:
     "titulo canvas"
@@ -73,7 +79,16 @@ main {
   justify-self: center;
 }
 
-main :nth-of-type(2) {
+#ctrlPg {
+  padding: 20px 0;
+  align-self: center;
+  justify-self: center;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: auto auto auto;
+}
+
+#pagina :nth-of-type(2n) {
   /* https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-of-type */
   background-color: WhiteSmoke;
 }
