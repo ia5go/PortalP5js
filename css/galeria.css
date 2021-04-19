@@ -31,10 +31,28 @@ p {
   font-size: 1.3rem;
   line-height: normal;
 }
-
+/* header */
 header {
   grid-area: header;
-  padding: 15vh;
+  display: grid;
+  grid-template-areas:
+    "nav"
+    "titulo"
+    "coment";
+}
+
+header nav {
+  grid-area: nav;
+  justify-self: right;
+  margin: 20px;
+}
+header h1 {
+  grid-area: titulo;
+  margin: 10vh 5vw;
+}
+header p {
+  grid-area: coment;
+  margin: 0 5vw 5vh 5vw;
 }
 
 main {
