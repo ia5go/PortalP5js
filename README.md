@@ -47,6 +47,8 @@ Nesta etapa do projeto estou criando o layout sem dependencias de fonte de dado 
 - Informações coletadas:
 
   - Fonte:
+
+  ```
     html{
     font-size: 100%;
     -webkit-text-size-adjust: 100%;
@@ -58,11 +60,15 @@ Nesta etapa do projeto estou criando o layout sem dependencias de fonte de dado 
     font-size: 1em
     line-height: 1.45;
     }
+  ```
 
   - Cor:
+
+  ```
     a.disabled {
     color: #ed225d;
     }
+  ```
 
 ### Execuação do Layout
 
