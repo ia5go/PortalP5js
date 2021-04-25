@@ -1,0 +1,32 @@
+/*NOTE: de início eu só coloquei uma classe que é usada na home e um marcador
+que é usado na galeria - se não tiver mais utilizações em paginas diferentes 
+desmontar esse arquivo e dividir nos css excluvivos de cada pagina.*/
+/* botões ancora usados no projeto */
+.abtn {
+  justify-self: right;
+  align-self: center;
+
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
+  background: #ed225d;
+  padding: 0.3em;
+}
+
+/*links no geral*/
+a {
+  text-decoration: none;
+  font-size: 1.3em;
+  color: #ed225d;
+}
+
+/* links de paginação da galeria */
+#ctrlPg a {
+  text-decoration: none;
+  font-size: 1.3em;
+  color: black;
+}
+
+#ctrlPg a:hover {
+  color: #ed225d;
+}

@@ -7,7 +7,7 @@ Projeto de TCC, criação de um portal de divulgação da biblioteca e projetos 
 25/04-01/05
 
 - [ ] Terminar o layout de auto nível:
-  - [ ] Colocar os botões que faltam nos paineis na Home;
+  - [x] Colocar os botões que faltam nos paineis na Home;
   - [ ] Colocar a canvas no header da Home;
 - [ ] Colocar tudo que arquivo principal;
 - [ ] Enviar relatório ao professor;
