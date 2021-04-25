@@ -2,6 +2,36 @@
 
 Projeto de TCC, criação de um portal de divulgação da biblioteca e projetos P5js.
 
+## Cronograma
+
+25/04-01/05
+
+- [ ] Terminar o layout de auto nível:
+  - [ ] Colocar os botões que faltam nos paineis na Home;
+  - [ ] Colocar a canvas no header da Home;
+- [ ] Colocar tudo que arquivo principal;
+- [ ] Enviar relatório ao professor;
+
+02-08/05
+
+- [ ] Colocar a primeira dependencia JSON na galeria:
+  - [ ] Criar o JSON base;
+  - [ ] Fazer recuperar o json com p5js e criar os elementos html dinâmicamente;
+  - [ ] Botar o anterior em uma classe;
+  - [ ] Criar classe pra paginação;
+- [ ] Colocar tudo que arquivo principal;
+- [ ] Enviar relatório ao professor;
+
+09-15/05
+
+- [ ] Fazer a ligação com FireBase:
+  - [ ] Criar e pupular projeto no firebase;
+  - [ ] Integrar ao portal;
+- [ ] Colocar tudo que arquivo principal;
+- [ ] Enviar relatório ao professor;
+
+16-22/05
+
 ## Criação de protótipo de nível médio
 
 Nesta etapa do projeto estou criando o layout sem dependencias de fonte de dado e com o conteúdo limitado.
