@@ -6,10 +6,12 @@ Projeto de TCC, criação de um portal de divulgação da biblioteca e projetos 
 
 25/04-01/05
 
-- [ ] Terminar o layout de auto nível:
+- [x] Terminar o layout de auto nível:
   - [x] Colocar os botões que faltam nos paineis na Home;
-  - [ ] Colocar a canvas no header da Home;
-- [ ] Colocar tudo que arquivo principal;
+  - [x] Colocar a canvas no header da Home;
+- [ ] Colocar tudo que arquivo principal:
+  - [ ] Colocar os prints das paginas interias;
+  - [ ] Fazer a explicação das coisas escritras nesse readme;
 - [ ] Enviar relatório ao professor;
 
 02-08/05
@@ -106,3 +108,7 @@ Nesta etapa do projeto estou criando o layout sem dependencias de fonte de dado 
 - Fontes e cores
   https://developer.mozilla.org/pt-BR/docs/Learn/Common_questions/
   https://developer.chrome.com/docs/devtools/
+
+## Considerações
+
+- Gostaria de controlar a execução das canvas na galeria pra evitar gasto de recursos;
