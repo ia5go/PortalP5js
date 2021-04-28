@@ -9,10 +9,12 @@ Projeto de TCC, criação de um portal de divulgação da biblioteca e projetos 
 - [x] Terminar o layout de auto nível:
   - [x] Colocar os botões que faltam nos paineis na Home;
   - [x] Colocar a canvas no header da Home;
-- [ ] Colocar tudo que arquivo principal:
-  - [ ] Colocar os prints das paginas interias;
-  - [ ] Fazer a explicação das coisas escritras nesse readme;
-- [ ] Enviar relatório ao professor;
+- [x] Colocar tudo que arquivo principal:
+  - [x] Colocar os prints das paginas interias;
+        https://developers.google.com/web/updates/2016/04/devtools-digest-command-menu
+        https://canaltech.com.br/software/como-tirar-print-de-pagina-no-chrome-sem-instalar-programas/
+  - [x] Fazer a explicação das coisas escritras nesse readme;
+- [x] Enviar relatório ao professor;
 
 02-08/05
 
@@ -44,7 +46,7 @@ Nesta etapa do projeto estou criando o layout sem dependencias de fonte de dado 
 
   - Para descobrir a fonte usada no site utilizei as ferramentas de desenvolvedor do navegador. Ao dar inspecionar no texto do site é possível visualizar os atributos do css dos elementos.
 
-  - Para as, me interessei no tom de rosa utilizado nos links, botões e na logo do site. Utilizando as mesmas ferramentas de desenvolvimento do navegador, achei a informação de cor de uma ancora.
+  - Para as cores, me interessei no tom de rosa utilizado nos links, botões e na logo do site. Utilizando as mesmas ferramentas de desenvolvimento do navegador, achei a informação de cor de uma ancora.
 
 - Informações coletadas:
 
@@ -77,8 +79,6 @@ Nesta etapa do projeto estou criando o layout sem dependencias de fonte de dado 
 #### Geral
 
 - Para o layout do decidi utilizar o css grid como ferramenta principal. Por ser uma ferramenta versátil, moderna e combinar com a forma que estou pensando esse portal.
-- NOTE: Falta definir a aparencia dos links e botões:
-  - Os links provavelemnte serão consistentes entre todas as págnias, então talvez eu faço um css exclusivo para eles, botões talvez entrem na mesma situação.
 - NOTE: Esse é na vdd um modelo de alto nível sem dependencias (conversar sobre isso com o orientador);
 
 #### Footer

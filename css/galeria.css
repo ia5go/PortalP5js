@@ -61,9 +61,11 @@ main {
 }
 /* Padrão do painel de projeto */
 .painel {
+  align-self: center;
+  justify-self: center;
   margin: 2vw;
   padding: 2vw;
-  border: solid 1px #ed225d;
+  border: solid 2px #ed225d;
   border-radius: 15px;
   display: grid;
   grid-template-areas:
