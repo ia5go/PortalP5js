@@ -97,6 +97,18 @@ Nesta etapa do projeto estou criando o layout sem dependencias de fonte de dado 
 - Ainda tenho que decidir como será o controle de paginação;
 - Falta um fundo para o header;
 
+### Adicionando dependências de dados
+
+A ideia agora e começar a desenvolver uma base de dados. Decidi fazer isso por partes, começando com uma dependencia JSON que vai ser a principal, já que é com ela que vou tornar funcional o dinamismo da galeria. Depois que estiver funcionando bem o próximo passo será trabalhar com o Firebase.
+
+#### Dependencia JSON
+
+- Criação do arquivo.
+
+### Galeria dinâmica
+
+- [área sobre deve do código que vai tornar a galeria dinâmica]
+
 ## Ref
 
 - Execuação do Layout
