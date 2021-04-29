@@ -11,6 +11,7 @@ body {
     "main"
     "footer";
   grid-template-rows: 100vh auto auto;
+  overflow-x: hidden;
 }
 
 h1 {

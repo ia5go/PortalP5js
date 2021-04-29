@@ -19,10 +19,12 @@ Projeto de TCC, criação de um portal de divulgação da biblioteca e projetos 
 02-08/05
 
 - [ ] Colocar a primeira dependencia JSON na galeria:
-  - [ ] Criar o JSON base;
-  - [ ] Fazer recuperar o json com p5js e criar os elementos html dinâmicamente;
-  - [ ] Botar o anterior em uma classe;
-  - [ ] Criar classe pra paginação;
+  - [x] Criar o JSON base;
+  - [x] Fazer recuperar o json com p5js e criar os elementos html dinâmicamente;
+  - [ ] Escrever sobre os elementos criados dinamicamente no reademe;
+  - [ ] Montar esquema de classes que vão controlar essa criação dinâmica;
+    - [ ] Classe painel;
+    - [ ] Classe paginação;
 - [ ] Colocar tudo que arquivo principal;
 - [ ] Enviar relatório ao professor;
 
