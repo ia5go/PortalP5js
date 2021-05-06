@@ -1,4 +1,5 @@
 let entrada;
+let painel
 function preload(){
   //carregando o json
   entrada=loadJSON('../json/base.json');
@@ -9,22 +10,34 @@ function preload(){
 
 function setup(){
   noCanvas();
+  painel = new Painel(entrada[0]);
+  
+  //console.log(painel);
+}
 
-  //criando elementos html que vão ser preenchidos pelo json
-  //painel
-  let painel = createElement('section');
-  painel.parent('pagina');
-  painel.class('painel');
-  painel.html(entrada[0].Embed);
-  //titulo
-  let titulo = createElement('h2', entrada[0].Titulo);
-  titulo.parent(painel);
-  //descrição
-  let desc = createP(entrada[0].Descricao);
-  desc.parent(painel);
-  //autor
-  let autor = createElement('h3', entrada[0].Autor);
-  autor.parent(painel);
+/*Para a classe usada como painel, eu poderia ter apenas criado uma função construtuora, por hábito 
+utiloso o modelo "class { cosntructor() }"" */
+class Painel{
+  constructor(obj){
+    //criando elementos html que vão ser preenchidos pelo json
+    //painel
+    this.painel = createElement('section');
+    this.painel.parent('pagina');
+    this.painel.class('painel');
+    this.painel.html(obj.Embed);
+    //titulo
+    this.titulo = createElement('h2', obj.Titulo);
+    this.titulo.parent(this.painel);
+    //descrição
+    this.desc = createP(obj.Descricao);
+    this.desc.parent(this.painel);
+    //autor
+    this.autor = createElement('h3', obj.Autor);
+    this.autor.parent(this.painel);/*na hora de definir o pai dentro de um objeto é necessário
+    indicar this. caso o pai seja um dos elementos do próprio objeto. Quando eu tentei só trazer 
+    o código antigo o termo "painel" que era o nome da váriável anterior não funcinou pq agora 
+    ela é "this.painel" */
 
-  //createElement(tag, [content]) (pro caso de precisar criar um elemento que ainda não tem dentro das funções prontas da p5js) https://p5js.org/reference/#/p5/createElement
+    //createElement(tag, [content]) (pro caso de precisar criar um elemento que ainda não tem dentro das funções prontas da p5js) https://p5js.org/reference/#/p5/createElement
+  }
 }
