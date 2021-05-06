@@ -2,7 +2,7 @@ let entrada;
 let pagina
 function preload(){
   //carregando o json
-  entrada=loadJSON('../json/base.json');
+  entrada=loadJSON('https://ia5go.github.io/json/base.json');
   /*o json sempre deve ser carregado no preload pra evitar que algo seja executado antes dele...
   eu havia me esquecido disso e estava tentando rodar carregar o json e usar ele em setup(),
   o retorno ao utilizar ele era sempre undefined mesmo com um log no console mostrando o json funcionando */
