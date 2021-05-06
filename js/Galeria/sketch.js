@@ -26,8 +26,5 @@ function setup(){
   let autor = createElement('h3', entrada[0].Autor);
   autor.parent(painel);
 
-
-
-
   //createElement(tag, [content]) (pro caso de precisar criar um elemento que ainda não tem dentro das funções prontas da p5js) https://p5js.org/reference/#/p5/createElement
 }

@@ -21,10 +21,10 @@ Projeto de TCC, criação de um portal de divulgação da biblioteca e projetos 
 - [ ] Colocar a primeira dependencia JSON na galeria:
   - [x] Criar o JSON base;
   - [x] Fazer recuperar o json com p5js e criar os elementos html dinâmicamente;
-  - [ ] Escrever sobre os elementos criados dinamicamente no reademe;
-  - [ ] Montar esquema de classes que vão controlar essa criação dinâmica;
-    - [ ] Classe painel;
-    - [ ] Classe paginação;
+  - [x] Escrever sobre os elementos criados dinamicamente no reademe;
+  - [x] Montar esquema de classes que vão controlar essa criação dinâmica:
+    - [x] Definir as classes necessárias (acredito que vou precisar criar 3, uma instanciando a outra paginação(pra controlar ql página que aparece e os controles do carroceu), uma pra montar as páginas em si, e uma pra controlar cada painel (paginacao(pagina(painel))));
+    - [x] Criar a UML;
 - [ ] Colocar tudo que arquivo principal;
 - [ ] Enviar relatório ao professor;
 
@@ -99,17 +99,25 @@ Nesta etapa do projeto estou criando o layout sem dependencias de fonte de dado 
 - Ainda tenho que decidir como será o controle de paginação;
 - Falta um fundo para o header;
 
-### Adicionando dependências de dados
+## Adicionando dependências de dados
 
-A ideia agora e começar a desenvolver uma base de dados. Decidi fazer isso por partes, começando com uma dependencia JSON que vai ser a principal, já que é com ela que vou tornar funcional o dinamismo da galeria. Depois que estiver funcionando bem o próximo passo será trabalhar com o Firebase.
+A ideia agora é a desenvolver uma base de dados para onde guardar os projetos que serão mostrados na galeria. Decidi fazer isso por partes, começando com uma dependencia JSON que vai ser a principal, já que é com ela que vou tornar funcional o dinamismo da galeria. Depois que estiver funcionando bem o próximo passo será trabalhar com o Firebase.
 
-#### Dependencia JSON
+### Dependencia JSON
 
-- Criação do arquivo.
+- A primeira dependência json conta com um array com alguns objetos que contam com Título, Descrição, Embed e Autor. Estes são os campos necessários para criação de um painel de projeto.
 
-### Galeria dinâmica
+- A conexão e recebimento do json é feita utilizando a própria p5js, atraves da função loadJSON() que recebe um caminho como parâmetro e retorna um objeto json. A biblioteca p5js ainda nos dá uma função de ambiente, chamada preload(), que garante que algo seja carregado antes de executar o resante do código javascript.
 
-- [área sobre deve do código que vai tornar a galeria dinâmica]
+## Galeria criada dinâmicamente
+
+Na galeria, estou usando a p5js e seus métodos para criar dinamicamente os paineis que mostram os projetos. Para isso é necessário a criação de um arquivo sketch.js, mas nenhuma canvas será criada, apenas a execução da montagem dos elementos HTML na página.
+
+A biblioteca p5js conta com uma série de métodos para criação de elementos HTML, estes elementos seguem a classe base p5.Elemente, que já tras consigo alguns de métodos que permitem organização dos elementos dentro da página.
+
+## Considerações
+
+- Gostaria de controlar a execução das canvas na galeria pra evitar gasto de recursos;
 
 ## Ref
 
@@ -119,10 +127,15 @@ A ideia agora e começar a desenvolver uma base de dados. Decidi fazer isso por 
     https://wordpress.tv/2017/06/30/morten-rand-hendriksen-css-grid-changes-everything-about-web-layouts/ (como referenciar esse link?)
     https://developer.mozilla.org/pt-BR/docs/Web/CSS/grid
 
-- Fontes e cores
-  https://developer.mozilla.org/pt-BR/docs/Learn/Common_questions/
-  https://developer.chrome.com/docs/devtools/
+  - Fontes e cores
+    https://developer.mozilla.org/pt-BR/docs/Learn/Common_questions/
+    https://developer.chrome.com/docs/devtools/
 
-## Considerações
+- Adicionando dependências de dados
 
-- Gostaria de controlar a execução das canvas na galeria pra evitar gasto de recursos;
+  - Dependencia JSON
+    MCCARTHY, Lauren; REAS, Casey; FRY, Ben. Getting started with P5. js: Making interactive graphics in JavaScript and processing. Maker Media, Inc., 2015.
+
+- Galeria criada dinâmicamente
+  https://p5js.org/reference/#/p5.Element
+  https://p5js.org/reference/#group-DOM
