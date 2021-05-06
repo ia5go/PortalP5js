@@ -1,5 +1,5 @@
 let entrada;
-let painel
+let pagina
 function preload(){
   //carregando o json
   entrada=loadJSON('../json/base.json');
@@ -10,7 +10,7 @@ function preload(){
 
 function setup(){
   noCanvas();
-  painel = new Painel(entrada[0]);
+  pagina = new Pagina(entrada);
   
   //console.log(painel);
 }
@@ -39,5 +39,21 @@ class Painel{
     ela é "this.painel" */
 
     //createElement(tag, [content]) (pro caso de precisar criar um elemento que ainda não tem dentro das funções prontas da p5js) https://p5js.org/reference/#/p5/createElement
+  }
+}
+
+/*igualmente ao painel a pagina é simples e poderia ser uma função construtora */
+class Pagina{
+  constructor(obj){
+    this.paines = [];
+    for(let i=0; i<5; i++){
+      this.paines[i] = new Painel(obj[i]);
+    }
+  }
+}
+
+class Paginacao{
+  constructor(obj){
+
   }
 }
