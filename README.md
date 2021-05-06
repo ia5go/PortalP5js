@@ -25,6 +25,10 @@ Projeto de TCC, criação de um portal de divulgação da biblioteca e projetos 
   - [x] Montar esquema de classes que vão controlar essa criação dinâmica:
     - [x] Definir as classes necessárias (acredito que vou precisar criar 3, uma instanciando a outra paginação(pra controlar ql página que aparece e os controles do carroceu), uma pra montar as páginas em si, e uma pra controlar cada painel (paginacao(pagina(painel))));
     - [x] Criar a UML;
+- [ ] Codar as classes:
+  - [ ] Painel;
+  - [ ] Página;
+  - [ ] Paginação;
 - [ ] Colocar tudo que arquivo principal;
 - [ ] Enviar relatório ao professor;
 
