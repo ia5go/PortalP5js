@@ -2,7 +2,7 @@
 
 Projeto de TCC, criação de um portal de divulgação da biblioteca e projetos P5js.
 
-## Cronograma
+# Cronograma
 
 25/04-01/05
 
@@ -16,23 +16,22 @@ Projeto de TCC, criação de um portal de divulgação da biblioteca e projetos 
   - [x] Fazer a explicação das coisas escritras nesse readme;
 - [x] Enviar relatório ao professor;
 
-02-08/05
+02-17/05
 
-- [ ] Colocar a primeira dependencia JSON na galeria:
+- [x] Colocar a primeira dependencia JSON na galeria:
   - [x] Criar o JSON base;
   - [x] Fazer recuperar o json com p5js e criar os elementos html dinâmicamente;
   - [x] Escrever sobre os elementos criados dinamicamente no reademe;
   - [x] Montar esquema de classes que vão controlar essa criação dinâmica:
     - [x] Definir as classes necessárias (acredito que vou precisar criar 3, uma instanciando a outra paginação(pra controlar ql página que aparece e os controles do carroceu), uma pra montar as páginas em si, e uma pra controlar cada painel (paginacao(pagina(painel))));
     - [x] Criar a UML;
-- [ ] Codar as classes:
+- [x] Codar as classes:
   - [x] Painel;
-  - [ ] Página;
-  - [ ] Paginação;
-- [ ] Colocar tudo que arquivo principal;
+  - [x] Página;
+- [x] Colocar tudo que arquivo principal;
 - [ ] Enviar relatório ao professor;
 
-09-15/05
+18-25/05
 
 - [ ] Fazer a ligação com FireBase:
   - [ ] Criar e pupular projeto no firebase;
@@ -42,11 +41,11 @@ Projeto de TCC, criação de um portal de divulgação da biblioteca e projetos 
 
 16-22/05
 
-## Criação de protótipo de nível médio
+# Criação de protótipo de nível médio
 
 Nesta etapa do projeto estou criando o layout sem dependencias de fonte de dado e com o conteúdo limitado.
 
-### Fontes e cores
+## Fontes e cores
 
 - Decidi que vou seguir o padrão do site oficial da biblioteca https://p5js.org/
 
@@ -80,34 +79,34 @@ Nesta etapa do projeto estou criando o layout sem dependencias de fonte de dado 
     }
   ```
 
-### Execuação do Layout
+## Execuação do Layout
 
-#### Geral
+### Geral
 
 - Para o layout do decidi utilizar o css grid como ferramenta principal. Por ser uma ferramenta versátil, moderna e combinar com a forma que estou pensando esse portal.
 - NOTE: Esse é na vdd um modelo de alto nível sem dependencias (conversar sobre isso com o orientador);
 
-#### Footer
+### Footer
 
 - Como o footer segue o msm padrão em todas as páginas decidi separar o css dele.
 
-#### Home
+### Home
 
 - Executado seguindo o que foi defino no protótipo de baixa fidelidade;
 - Quero adicionar uma canvas com animação no header.
 
-#### Galeria
+### Galeria
 
 - Executado seguindo o que foi defino no protótipo de baixa fidelidade;
 - Percebi que não defini a aplicação de uma nav, mas adicionei nessa versão por motivos de precisar de um caminho para home e outras coisas que talvez eu ainda não tenha pensado;
 - Ainda tenho que decidir como será o controle de paginação;
 - Falta um fundo para o header;
 
-## Adicionando dependências de dados
+# Adicionando dependências de dados
 
 A ideia agora é a desenvolver uma base de dados para onde guardar os projetos que serão mostrados na galeria. Decidi fazer isso por partes, começando com uma dependencia JSON que vai ser a principal, já que é com ela que vou tornar funcional o dinamismo da galeria. Depois que estiver funcionando bem o próximo passo será trabalhar com o Firebase.
 
-### Dependencia JSON
+## Dependencia JSON
 
 - A primeira dependência json conta com um array com alguns objetos que contam com Título, Descrição, Embed e Autor. Estes são os campos necessários para criação de um painel de projeto.
 
@@ -121,13 +120,13 @@ function preload(){
 }
 ```
 
-## Galeria criada dinâmicamente
+# Galeria Dinâmica
 
 Na galeria, estou usando a p5js e seus métodos para criar dinamicamente os paineis que mostram os projetos. Para isso é necessário a criação de um arquivo sketch.js, mas nenhuma canvas será criada, apenas a execução da montagem dos elementos HTML na página.
 
 A biblioteca p5js conta com uma série de métodos para criação de elementos HTML, estes elementos seguem a classe base p5.Elemente, que já tras consigo alguns de métodos que permitem organização dos elementos dentro da página.
 
-### Mudando de plano
+## Mudando de plano
 
 Meu primeiro plano era criar uma classe página para agrupar os paineis da galeria, cada página ocuparia uma posição em um array da classe paginação. A classe paginação iria controlar o atributo css, display, de cada página e apenas uma página estaria visível por vez, seguindo o modelo de carroceu simples que encontramos em diversos sites da internet. Seria necessário que a classe paginação fizesse a distribuição dos paineis para as páginas, e pensando em como fazer isso percebi que a classe página fica sendo um desperdício.
 
@@ -135,59 +134,89 @@ Primeiro, se a paginação vai controlar qual pagina aparece por vez e a distrib
 
 Segundo, uma preocupação que eu tinha era sobre o peso que a página teria por ter tantas canvas funcioando ao mesmo tempo e ainda ter mais carregadas no navegador esperando apenas uma troca de página. Controlando tudo em na classe paginação eu posso, ao invez de tirar esconder e mostrar conteúdos, modificar o que cada painel vai estar mostrando.
 
-### Mudando de plano novamente
+## Mudando de plano novamente
 
-A paginação não faz sentido como uma classe pois os botões que ela cria não tem acesso aos métodos que são necessários para funcionar. O botão proxima página precisa receber o ponteiro pro método que modifica qual página está sendo mestrada, mas não pode receber parâmetros, e não encherga os atributos da própria página.
+A paginação não funciona como uma classe pois os botões que ela cria não tem acesso aos atributos necessários para que os métodos funcionem. O botão proxima página, por exemplo, precisa de acesso ao indice geral que define qual página está sendo mostrada, mas como estava um atributo interno da classe para esse indice o método do botão não conseguia acessá-lo. Também faltou acesso ao objeto que guardava as informações da base de dados. Procurei um pouco sobre como resolver o problema, mas acabei não achando uma forma.
 
-Resolvi isso modificando a estrutura, assim agora as páginas serão conjuntos de paineis, mas a paginação em si será controlada pelo script principal de forma global.
+Percebi que o erro poderia ser resolvido colocando a variávei para controle de indice global, já que eu ainda tinha acesso ao array global com os dados para preencher a pagina. Como não faz sentido, para mim, uma classe que depende de uma variável global de um programa resolvi modificar a estrutura e tirar classe paginação, assim terei páginas que são conjuntos de paineis, mas a paginação em si será controlada pelo script principal de forma global.
 
-### Execução
+## Execução
 
-#### Classes
+### Classes
 
-Entre planos e replanejamentos, acabei com a criação de duas classes:
+Tendo em vista o planejamento e replanejamento anteriores, as seguintes classes serão utilizadas no sistema:
 
-##### Painel
+#### Painel
 
-Essa classe está preparada para receber um objeto do tipo projeto e transformar os campos em elementos HTML. Ela cria uma section onde aloca o embed que está no objeto, e cria os elementos HTML:
+Essa classe está preparada para receber um objeto do tipo projeto e transformar os campos em elementos HTML. Ela cria uma section onde aloca o embed, um iframe que está no objeto, e cria os seguintes elementos HTML:
 
-- <h2> para o título;
-- <p> para a descrição;
-- <h3> para o nome do autor.
+- h2 para o título;
+- p para a descrição;
+- h3 para o nome do autor.
 
-O próprio construtuor dessa classe já mostra os conteúdos que ela recebe. E conta com um método hide(), para ser capaz desaparecer da tela, que apenas chama o metodo hide() que todos os elementos DOM recebem na p5js.
-NOTE: Necessário falar sobre o método .show(), depois de adicionar na classe.
+O próprio construtuor dessa classe já mostra os conteúdos que recebe quando é instanciada.
 
-##### Página
+Esta classe conta com um método hide(), que permite que um painel seja escondido da tela. Este método chama o metodo hide(), que é implementado na classe base p5.Element que todos os elementos DOM erdam na p5js, para a section alterando seu atributo "display" no css para "none".
 
-Eu pensei em não utilizar essa classe quando tinha intenção de ter uma classe responsável por toda a paginação. Mas encontrei utilidade por essa página com a ultima mudança que fiz, pois é mais fácil controlar os grupos de paineis se não precisar recontar cada bloco toda vez que for mudar de página.
+A classe painel também conta com um metodo show(), mas este não trabalha com o método show() da p5js pois isso daria o valor "block" ao atributo display da section. O que quero aqui é tornar o section novamente em um grid. Assim o método show() da classe precisa chamar pelo método style() da section e definir redefinir o estilo como desejado.
 
-Essa classe recebe um conjunto de objetos que vão ser usados para criar os paineis com os projetos. Esses objetos serão organizados em um array cujo tanho depende da quantidade de objetos que a janela recebe.
+#### Página
 
-Ela também conta com um metodo hide(), que é responsável chamar o método hide() de cada um dos paineis que ela ordena. Sendo assim, uma página, esconde ou mostra todo um conjunto de paineis com apenas um comando.
+Eu pensei em não utilizar essa classe quando tinha intenção de ter uma classe responsável por toda a paginação. Mas encontrei utilidade por essa página com a ultima mudança que fiz, pois é mais fácil controlar os grupos de paineis se não precisar recalcular cada grupo de paineis cada vez que for mudar de página.
 
-NOTE: Necessário falar sobre o método .show(), depois de adicionar na classe.
+Essa classe recebe um conjunto de objetos que vão ser usados para criar os paineis com os projetos. Esses objetos serão organizados em um array cujo tanho depende do tamanho de arrays de objetos que a janela recebe.
 
-#### Global
+A classe página também conta com um metodo hide(), que é responsável chamar o método hide() de cada um dos paineis que que está dentro dela. Sendo assim, uma página, esconde ou mostra todo um conjunto de paineis com apenas um comando. Já o método show() funciona da mesma forma, chamando o método show() de cada painel da página.
+
+### Global
 
 O script que controla a paginação conta com variáveis globais que vão permitir que a página seja controlada.
 
 ```
-let entrada;      //gardará o retorno do bd
+let entrada;      //guardará o retorno do bd
 let paginas = []; //array de páginas
 let index = 0;    //indice pra controlar qual página aparece por vez
+let proxima;      //botão de avançar
+let anterior;     //botão de recuar
 ```
 
-Como dito anteriormente (dependencia json), o script carrega a base de dados antes de rodar qualquer instrução atravez da função preload(). Neste momento a variável entrada recebe as informações que vem da base de dados.
+Como dito anteriormente (Dependencia json), o script carrega a base de dados antes de rodar qualquer instrução atravez da função preload(). Neste momento a variável entrada recebe as informações que vem da base de dados.
 
-Logo depois, na função setup(), temos o bloco de instruções que cria as páginas.
+Logo depois, na função setup(), temos o bloco de instruções que cria as páginas e os controles de avançar e retornar.
+Todas as páginas, exceto a primeira, são escondidas logo depois de criadas com o comando:
 
-## Considerações
+```
+if(index != 0){
+      paginas[index].hide();
+}
+```
+
+As funções de avançar e voltar página são bem simples, elas verificam se há uma página adiante, ou anterior, se houver a página atual é escondida e a página que deve ser mostrada aparece. Como pode ser visto a seguir:
+
+```
+function proxPagina(){
+  if(paginas[index+1]){
+    paginas[index].hide();
+    index++;
+    paginas[index].show();
+  }
+}
+
+function voltarPagina(){
+  if(paginas[index-1]){
+    paginas[index].hide();
+    index--;
+    paginas[index].show();
+  }
+}
+```
+
+# Considerações
 
 - Gostaria de controlar a execução das canvas na galeria pra evitar gasto de recursos;
 - Gostaria de fazer as páginas serem criadas só quando vão ser mostradas ao invez de criar todas de uma vez;
 
-## Ref
+# Ref
 
 - Execuação do Layout
 

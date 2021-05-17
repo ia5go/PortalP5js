@@ -7,10 +7,6 @@ let anterior;
 function preload(){
   //carregando o json
   entrada=loadJSON('../json/base.json');
-
-  /*o json sempre deve ser carregado no preload pra evitar que algo seja executado antes dele...
-  eu havia me esquecido disso e estava tentando rodar carregar o json e usar ele em setup(),
-  o retorno ao utilizar ele era sempre undefined mesmo com um log no console mostrando o json funcionando */
 }
 
 function setup(){
@@ -25,7 +21,7 @@ function setup(){
       n++;
     }
     paginas[index] = new Pagina(paineis);
-    if(index != 0){ //escondendo páginas além da 0 
+    if(index != 0){ //escondendo páginas exceto a 0 
       paginas[index].hide();
     }
     index++; //vira prara a próxima página a ser inicializada
@@ -78,9 +74,6 @@ class Painel{
   hide(){
     this.painel.hide();
   }
-  /*Diferente de painel.hide(), onde eu usei um método pronto da p5js para esconder os paineis de determinada página,
-  no momento de mostrar os paineis novamente precisei usar o método style() para definir o atributo display dos paineis como grid.
-  O método que já existe na p5js, show(), define display como block o que quebra o completamente o layout criado previamente.*/
   show(){
     this.painel.style('display', 'grid');
   }
