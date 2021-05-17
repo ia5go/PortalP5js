@@ -129,7 +129,7 @@ A biblioteca p5js conta com uma série de métodos para criação de elementos H
 
 ### Mudando de plano
 
-Meu primeiro plano era criar uma classe página para agrupar os paineis da galeria, cada página teria uma posição em um array da classe paginação. A classe paginação iria controlar o atributo css, display, de cada página e apenas uma página estaria visível por vez, seguindo o modelo de carroceu simples que encontramos na internet em diversos sites da internet. Seria necessário que a classe paginação fizesse a distribuição dos paineis para as páginas, e pensando em como fazer isso percebi que a classe página fica sendo um desperdício.
+Meu primeiro plano era criar uma classe página para agrupar os paineis da galeria, cada página ocuparia uma posição em um array da classe paginação. A classe paginação iria controlar o atributo css, display, de cada página e apenas uma página estaria visível por vez, seguindo o modelo de carroceu simples que encontramos em diversos sites da internet. Seria necessário que a classe paginação fizesse a distribuição dos paineis para as páginas, e pensando em como fazer isso percebi que a classe página fica sendo um desperdício.
 
 Primeiro, se a paginação vai controlar qual pagina aparece por vez e a distribuição dos conteúdos dentro delas, eu posso deixar isso direto com a classe paginação, controlando apenas os grupos de conteúdo a serem exibidos por vez.
 

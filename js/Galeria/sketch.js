@@ -19,6 +19,7 @@ function setup(){
   let n=0;
   while(entrada[n]){
     let paineis = [];
+    //o 2 abaixo define qnts itens por página
     for(let i = 0; i < 2 && entrada[n]; i++){
       paineis[i] = entrada[n];
       n++;
@@ -88,7 +89,6 @@ class Painel{
 class Pagina{
   constructor(obj){
     this.paineis = [];
-    console.log('Página criada.');
     for(let i=0; i<obj.length; i++){
       this.paineis[i] = new Painel(obj[i]);
     }

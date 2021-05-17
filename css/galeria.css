@@ -23,6 +23,7 @@ h2 {
   font-size: 3rem;
   line-height: 1.4;
 }
+
 h3 {
   font-size: 2rem;
 }
@@ -30,6 +31,12 @@ h3 {
 p {
   font-size: 1.3rem;
   line-height: normal;
+}
+
+a {
+  text-decoration: none;
+  font-size: 1.3em;
+  color: #ed225d;
 }
 /* header */
 header {
@@ -108,7 +115,25 @@ main {
   grid-template-columns: auto auto auto;
 }
 
+#ctrlPg button {
+  justify-self: right;
+  align-self: center;
+
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
+  background: #ed225d;
+  padding: 0.3em;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  font-size: 1.3em;
+  color: #ed225d;
+}
+
 #pagina :nth-of-type(2n) {
   /* https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-of-type */
-  background-color: WhiteSmoke;
+  background-color: rgb(238, 233, 233);
 }
