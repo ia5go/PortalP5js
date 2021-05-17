@@ -113,15 +113,79 @@ A ideia agora é a desenvolver uma base de dados para onde guardar os projetos q
 
 - A conexão e recebimento do json é feita utilizando a própria p5js, atraves da função loadJSON() que recebe um caminho como parâmetro e retorna um objeto json. A biblioteca p5js ainda nos dá uma função de ambiente, chamada preload(), que garante que algo seja carregado antes de executar o resante do código javascript.
 
+A base de dado é carregada a com a função preload() que já da p5js.
+
+```
+function preload(){
+  entrada=loadJSON('../json/base.json');
+}
+```
+
 ## Galeria criada dinâmicamente
 
 Na galeria, estou usando a p5js e seus métodos para criar dinamicamente os paineis que mostram os projetos. Para isso é necessário a criação de um arquivo sketch.js, mas nenhuma canvas será criada, apenas a execução da montagem dos elementos HTML na página.
 
 A biblioteca p5js conta com uma série de métodos para criação de elementos HTML, estes elementos seguem a classe base p5.Elemente, que já tras consigo alguns de métodos que permitem organização dos elementos dentro da página.
 
+### Mudando de plano
+
+Meu primeiro plano era criar uma classe página para agrupar os paineis da galeria, cada página teria uma posição em um array da classe paginação. A classe paginação iria controlar o atributo css, display, de cada página e apenas uma página estaria visível por vez, seguindo o modelo de carroceu simples que encontramos na internet em diversos sites da internet. Seria necessário que a classe paginação fizesse a distribuição dos paineis para as páginas, e pensando em como fazer isso percebi que a classe página fica sendo um desperdício.
+
+Primeiro, se a paginação vai controlar qual pagina aparece por vez e a distribuição dos conteúdos dentro delas, eu posso deixar isso direto com a classe paginação, controlando apenas os grupos de conteúdo a serem exibidos por vez.
+
+Segundo, uma preocupação que eu tinha era sobre o peso que a página teria por ter tantas canvas funcioando ao mesmo tempo e ainda ter mais carregadas no navegador esperando apenas uma troca de página. Controlando tudo em na classe paginação eu posso, ao invez de tirar esconder e mostrar conteúdos, modificar o que cada painel vai estar mostrando.
+
+### Mudando de plano novamente
+
+A paginação não faz sentido como uma classe pois os botões que ela cria não tem acesso aos métodos que são necessários para funcionar. O botão proxima página precisa receber o ponteiro pro método que modifica qual página está sendo mestrada, mas não pode receber parâmetros, e não encherga os atributos da própria página.
+
+Resolvi isso modificando a estrutura, assim agora as páginas serão conjuntos de paineis, mas a paginação em si será controlada pelo script principal de forma global.
+
+### Execução
+
+#### Classes
+
+Entre planos e replanejamentos, acabei com a criação de duas classes:
+
+##### Painel
+
+Essa classe está preparada para receber um objeto do tipo projeto e transformar os campos em elementos HTML. Ela cria uma section onde aloca o embed que está no objeto, e cria os elementos HTML:
+
+- <h2> para o título;
+- <p> para a descrição;
+- <h3> para o nome do autor.
+
+O próprio construtuor dessa classe já mostra os conteúdos que ela recebe. E conta com um método hide(), para ser capaz desaparecer da tela, que apenas chama o metodo hide() que todos os elementos DOM recebem na p5js.
+NOTE: Necessário falar sobre o método .show(), depois de adicionar na classe.
+
+##### Página
+
+Eu pensei em não utilizar essa classe quando tinha intenção de ter uma classe responsável por toda a paginação. Mas encontrei utilidade por essa página com a ultima mudança que fiz, pois é mais fácil controlar os grupos de paineis se não precisar recontar cada bloco toda vez que for mudar de página.
+
+Essa classe recebe um conjunto de objetos que vão ser usados para criar os paineis com os projetos. Esses objetos serão organizados em um array cujo tanho depende da quantidade de objetos que a janela recebe.
+
+Ela também conta com um metodo hide(), que é responsável chamar o método hide() de cada um dos paineis que ela ordena. Sendo assim, uma página, esconde ou mostra todo um conjunto de paineis com apenas um comando.
+
+NOTE: Necessário falar sobre o método .show(), depois de adicionar na classe.
+
+#### Global
+
+O script que controla a paginação conta com variáveis globais que vão permitir que a página seja controlada.
+
+```
+let entrada;      //gardará o retorno do bd
+let paginas = []; //array de páginas
+let index = 0;    //indice pra controlar qual página aparece por vez
+```
+
+Como dito anteriormente (dependencia json), o script carrega a base de dados antes de rodar qualquer instrução atravez da função preload(). Neste momento a variável entrada recebe as informações que vem da base de dados.
+
+Logo depois, na função setup(), temos o bloco de instruções que cria as páginas.
+
 ## Considerações
 
 - Gostaria de controlar a execução das canvas na galeria pra evitar gasto de recursos;
+- Gostaria de fazer as páginas serem criadas só quando vão ser mostradas ao invez de criar todas de uma vez;
 
 ## Ref
 
