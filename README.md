@@ -29,10 +29,11 @@ Projeto de TCC, criação de um portal de divulgação da biblioteca e projetos 
   - [x] Painel;
   - [x] Página;
 - [x] Colocar tudo que arquivo principal;
-- [ ] Enviar relatório ao professor;
 
-18-25/05
+18-31/05
 
+- [ ] DBaaS - O que é?
+- [ ] Firebase - O que é?
 - [ ] Fazer a ligação com FireBase:
   - [ ] Criar e pupular projeto no firebase;
   - [ ] Integrar ao portal;
@@ -119,6 +120,16 @@ function preload(){
   entrada=loadJSON('../json/base.json');
 }
 ```
+
+## Dependencia Firebase
+
+### Database as a Service
+
+### Firebase
+
+NEXT: criar projeto e popular
+
+### Integrando Firebase ao portal P5js
 
 # Galeria Dinâmica
 
