@@ -32,8 +32,9 @@ Projeto de TCC, criação de um portal de divulgação da biblioteca e projetos 
 
 18-31/05
 
-- [ ] DBaaS - O que é?
-- [ ] Firebase - O que é?
+- [x] DBaaS - O que é?
+- [x] Firebase - O que é?
+- [x] Tipos de bd no firebase e qual usarei;
 - [ ] Fazer a ligação com FireBase:
   - [ ] Criar e pupular projeto no firebase;
   - [ ] Integrar ao portal;
@@ -125,11 +126,35 @@ function preload(){
 
 ### Database as a Service
 
+O conceito herda do paradigma de _Software as a Service_ (SaaS), que é basicamente a ideia de implementar softwares em servidores e oferecer ao cliente a utlização por meio de navegadores, assim o cliente não precisa se preocupar com instalação e manutenção de software e hardware para utilizar certo serviço. É seguindo esse paradigma que é possível que um usuário abra seu navegador, entre em um servidor de email (GMail, Outlook, Yahool), e acesse suas mensagens sem se preocupar com o estado da maquina ou a versão do programa que permite acesso aqueles dados.
+
+Levando isso para o campo de bancos de dados, temos _Database as a Service_ (DBaaS), _Banco de adaos como serviço_ em português. Esse tipo de serviço permite que desenvolvedores de software se preocupem menos com a infraestrutura necessária para manter um banco de dados em funcionamento.
+
+Criar e manter um banco de dados é um ponto de alto custo financeiro, com demanda de maquinas de alta performance e captal humano especializado. A mesma infra estrutura também pode acabar não sendo utilizada completamente.
+
+Com um DBaaS um cliente pode pagar pelo que usa, não pelo que poderá ou não usar no futuro. Criando uma aumento mais organico nos custos de um projeto, pois a capacidade do banco de dados segue uma demanda real, e pode ser aumentada facilmente com upgrades em pacotes de serviço.
+
 ### Firebase
 
-NEXT: criar projeto e popular
+Firebase é uma plataforma de serviços backend que hoje pertence a Google. Entre os seus serviços estão: Banco de dados, armazenamento em nuvem, autenticação, apremdizado de máquina e outros.
+
+A escolha por usar essa plataforma veio da curiosiade que surgiu quando ouvi sobre ela e do interesse em trabalhar um banco de dados que segue um paradigma diferente do que eu vi até o momento.
+
+O Firebase oferece dois bancos de dados baseados em nuvem:
+
+**Cloud Firestore:** novo banco de dados para desenvolvimetno de aplicativos moveis. Construido sobre o _Realtime Database_ e conta com um novo modelo de dados, baseado em guardar dados em arquivos.
+
+**Realtime Database:** banco de dados original do Firebase, trabalha com modelo de dados em formato JSON.
+
+Ambos serviços oferencem uso gratuito até algum nível, e plano pago por uso. Ou seja, em ambos, o custo segue o uso real da aplicação. Optei por trabalhar com o _Realtime Database_ pois minha aplicação é pequena e um sistema de dados em arvore JSON já vai ser mais simples de controlar.
 
 ### Integrando Firebase ao portal P5js
+
+NEXT:
+
+1 Criar o projeto;
+2 Alimentar o bd;
+3 Integrar o aplicação;
 
 # Galeria Dinâmica
 
@@ -243,6 +268,13 @@ function voltarPagina(){
 
   - Dependencia JSON
     MCCARTHY, Lauren; REAS, Casey; FRY, Ben. Getting started with P5. js: Making interactive graphics in JavaScript and processing. Maker Media, Inc., 2015.
+
+  - DBaaS
+    LEHNER, Wolfgang; SATTLER, Kai-Uwe. Database as a service (DBaaS). In: 2010 IEEE 26th International Conference on Data Engineering (ICDE 2010). IEEE, 2010. p. 1216-1217.
+
+  - Firebase
+    https://flutter.dev/docs/development/data-and-backend/firebase
+    https://firebase.google.com/docs/database/rtdb-vs-firestore?authuser=0
 
 - Galeria criada dinâmicamente
   https://p5js.org/reference/#/p5.Element
