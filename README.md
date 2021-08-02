@@ -30,18 +30,25 @@ Projeto de TCC, criação de um portal de divulgação da biblioteca e projetos 
   - [x] Página;
 - [x] Colocar tudo que arquivo principal;
 
-18-31/05
+18-30/05
 
 - [x] DBaaS - O que é?
 - [x] Firebase - O que é?
 - [x] Tipos de bd no firebase e qual usarei;
-- [ ] Fazer a ligação com FireBase:
-  - [ ] Criar e pupular projeto no firebase;
-  - [ ] Integrar ao portal;
+- [x] Fazer a ligação com FireBase:
+  - [x] Criar e pupular projeto no firebase;
+  - [x] Integrar ao portal;
+  - [ ] Criar arquivo config.js para esconder as variáveis do servidor do github;
+  - [ ] Descobrir como fazer a galeria não atualizar automaticamente;
 - [ ] Colocar tudo que arquivo principal;
-- [ ] Enviar relatório ao professor;
+- [ ] Enviar relatório ao professor:
+  - [ ] O que foi feito até o memento;
+  - [ ] Possiveis próximos passos:
+    - Colocar a pagina em um servidor;
+    - Criar a página de enviar projeto;
+    - Corrigir os conteúdos;
 
-16-22/05
+31/05 - 06/06
 
 # Criação de protótipo de nível médio
 
@@ -126,9 +133,9 @@ function preload(){
 
 ### Database as a Service
 
-O conceito herda do paradigma de _Software as a Service_ (SaaS), que é basicamente a ideia de implementar softwares em servidores e oferecer ao cliente a utlização por meio de navegadores, assim o cliente não precisa se preocupar com instalação e manutenção de software e hardware para utilizar certo serviço. É seguindo esse paradigma que é possível que um usuário abra seu navegador, entre em um servidor de email (GMail, Outlook, Yahool), e acesse suas mensagens sem se preocupar com o estado da maquina ou a versão do programa que permite acesso aqueles dados.
+O conceito de _Database as a Service_ herda do paradigma de _Software as a Service_ (SaaS), que é basicamente a ideia de implementar softwares em servidores e oferecer ao cliente a utlização por meio de navegadores, assim o cliente não precisa se preocupar com instalação e manutenção de software e hardware para utilizar dado serviço. Seguindo esse paradigma que é possível que um usuário abra seu navegador, entre em um servidor de email (GMail, Outlook, Yahool), e acesse suas mensagens sem se preocupar com o estado da maquina ou a versão do software que permite acesso aqueles dados.
 
-Levando isso para o campo de bancos de dados, temos _Database as a Service_ (DBaaS), _Banco de adaos como serviço_ em português. Esse tipo de serviço permite que desenvolvedores de software se preocupem menos com a infraestrutura necessária para manter um banco de dados em funcionamento.
+Levando isso para o campo de bancos de dados, temos _Database as a Service_ (DBaaS), _Banco de dados como serviço_ em português. Esse tipo de serviço permite que desenvolvedores de software se preocupem menos com a infraestrutura necessária para manter um banco de dados em funcionamento.
 
 Criar e manter um banco de dados é um ponto de alto custo financeiro, com demanda de maquinas de alta performance e captal humano especializado. A mesma infra estrutura também pode acabar não sendo utilizada completamente.
 
@@ -144,17 +151,27 @@ O Firebase oferece dois bancos de dados baseados em nuvem:
 
 **Cloud Firestore:** novo banco de dados para desenvolvimetno de aplicativos moveis. Construido sobre o _Realtime Database_ e conta com um novo modelo de dados, baseado em guardar dados em arquivos.
 
-**Realtime Database:** banco de dados original do Firebase, trabalha com modelo de dados em formato JSON.
+**Realtime Database:** banco de dados original do Firebase, trabalha com modelo de dados em árvores, como o utilizado em um arquivo JSON.
 
-Ambos serviços oferencem uso gratuito até algum nível, e plano pago por uso. Ou seja, em ambos, o custo segue o uso real da aplicação. Optei por trabalhar com o _Realtime Database_ pois minha aplicação é pequena e um sistema de dados em arvore JSON já vai ser mais simples de controlar.
+Ambos serviços oferencem uso gratuito até algum nível, e plano pago por uso. Ou seja, em ambos, o custo segue o uso real da aplicação. Optei por trabalhar com o _Realtime Database_ pois minha aplicação é pequena e um sistema de dados em árvore JSON será mais simples de controlar.
+
+### Segurança do Firebase
+
+#### Regras Firabase
+
+1 testar fechamento de regras e como isso interfere na galeria
+
+#### Variaveis de configuração
+
+1 Separar as variaveis do sistema para um arquivo
 
 ### Integrando Firebase ao portal P5js
 
-NEXT:
+1 Passos para fazer o firebase funcionar
 
-1 Criar o projeto;
-2 Alimentar o bd;
-3 Integrar o aplicação;
+#### Adaptação e integração do db a galeria
+
+1 O que foi mudado para que o firebase funcione como fonte de dados na galeria
 
 # Galeria Dinâmica
 
@@ -223,7 +240,7 @@ Todas as páginas, exceto a primeira, são escondidas logo depois de criadas com
 
 ```
 if(index != 0){
-      paginas[index].hide();
+  paginas[index].hide();
 }
 ```
 
@@ -251,6 +268,7 @@ function voltarPagina(){
 
 - Gostaria de controlar a execução das canvas na galeria pra evitar gasto de recursos;
 - Gostaria de fazer as páginas serem criadas só quando vão ser mostradas ao invez de criar todas de uma vez;
+- Gostaria de criar versões das páginas para mobile;
 
 # Ref
 
@@ -275,6 +293,13 @@ function voltarPagina(){
   - Firebase
     https://flutter.dev/docs/development/data-and-backend/firebase
     https://firebase.google.com/docs/database/rtdb-vs-firestore?authuser=0
+
+  - Segurança do Firebase
+
+    - Regras Firabase
+    - Variaveis de configuração
+      - Gitignore
+        https://docs.github.com/pt/github/getting-started-with-github/getting-started-with-git/ignoring-files
 
 - Galeria criada dinâmicamente
   https://p5js.org/reference/#/p5.Element

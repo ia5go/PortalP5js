@@ -1,0 +1,10 @@
+// Exemplo do arquivo de configurção para estabelecer conexão com o servidor
+
+const APIKEY = "apiKey";
+const AUTHDOMAIN = "authDomain";
+const DATABASEURL = "databaseURL";
+const PROJECTID = "projectId";
+const STORAGEBUCKET = "storageBucket";
+const MESSAGINGSENDERID = "messagingSenderId";
+const APPID = "APPID";
+const MEASUREMENTID = "MEASUREMENTID";
