@@ -5,12 +5,12 @@ let proxima;
 let anterior;
 let db;
 
-function preload(){
+function preload() {
   /*NOTE: add os valores do arquivo json dentro do firebase... fiz isso pelo js
   pq o firebase coloca um valor de chave diferente nos objetos salvos dentro do bd
   logo não posso me acostumar com indices crescentes simples... 
   Also */
-  
+
   // entrada = loadJSON('../json/base.json');
   // let i = 0;
   // while(entrada[i]){
@@ -20,7 +20,7 @@ function preload(){
 }
 
 
-function setup(){
+function setup() {
   noCanvas();
   // NOTE: Firebase configuration
   var firebaseConfig = {
@@ -42,7 +42,7 @@ function setup(){
   // NOTE: Pegando o nó 'projs'
   base = dbService.ref('projs');
   // NOTE: Resgata os valores do servidor para montar a página
-  base.on('value', gotData, gotErr);
+  base.once('value', gotData, gotErr);
   //criando os botões de paginação 
   anterior = createButton('<< Voltar');
   anterior.mousePressed(voltarPagina);
@@ -52,23 +52,23 @@ function setup(){
   proxima.parent('ctrlPg');
 }
 
-function gotData(data){
+function gotData(data) {
   //entrada recebe uma cópia dos dados
   entrada = data.val();
   //keys é um array recebe chaves de identificação para cada instancia dentro de entrada
   //https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
   let keys = Object.keys(entrada);
-  
-  for(let n = 0; n<keys.length;){
+
+  for (let n = 0; n < keys.length;) {
     let paineis = [];
     //o 2 abaixo define qnts itens por página
-    for(let i = 0; i < 2 && keys[n]; i++){
+    for (let i = 0; i < 2 && keys[n]; i++) {
       let k = keys[n];
       paineis[i] = entrada[k];
       n++;
     }
     paginas[index] = new Pagina(paineis);
-    if(index != 0){ //escondendo páginas exceto a 0 
+    if (index != 0) { //escondendo páginas exceto a 0 
       paginas[index].hide();
     }
     index++;
@@ -76,29 +76,29 @@ function gotData(data){
   index = 0; //volta o indice pra 0
 }
 
-function gotErr(err){
+function gotErr(err) {
   console.log('Error!');
   console.log(err);
 }
 
-function proxPagina(){
-  if(paginas[index+1]){
+function proxPagina() {
+  if (paginas[index + 1]) {
     paginas[index].hide();
     index++;
     paginas[index].show();
   }
 }
 
-function voltarPagina(){
-  if(paginas[index-1]){
+function voltarPagina() {
+  if (paginas[index - 1]) {
     paginas[index].hide();
     index--;
     paginas[index].show();
   }
 }
 
-class Painel{
-  constructor(obj){
+class Painel {
+  constructor(obj) {
     //criando elementos html que vão ser preenchidos pelo json
     //painel
     this.painel = createElement('section');
@@ -116,30 +116,30 @@ class Painel{
     this.autor.parent(this.painel);
   }
 
-  hide(){
+  hide() {
     this.painel.hide();
   }
-  show(){
+  show() {
     this.painel.style('display', 'grid');
   }
 }
 
-class Pagina{
-  constructor(obj){
+class Pagina {
+  constructor(obj) {
     this.paineis = [];
-    for(let i=0; i<obj.length; i++){
+    for (let i = 0; i < obj.length; i++) {
       this.paineis[i] = new Painel(obj[i]);
     }
   }
 
-  hide(){
-    for(let i=0; i<this.paineis.length; i++){
+  hide() {
+    for (let i = 0; i < this.paineis.length; i++) {
       this.paineis[i].hide();
     }
   }
 
-  show(){
-    for(let i=0; i<this.paineis.length; i++){
+  show() {
+    for (let i = 0; i < this.paineis.length; i++) {
       this.paineis[i].show();
     }
   }

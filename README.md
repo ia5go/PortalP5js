@@ -163,15 +163,66 @@ Ambos serviços oferencem uso gratuito até algum nível, e plano pago por uso. 
 
 #### Variaveis de configuração
 
-1 Separar as variaveis do sistema para um arquivo
+Por motivos de segurança preciso separar as credenciais do arquivo no meu repositório do github. A princípio, resolvi só separar o arquivo e configuração (config.js) onde salvo constantes com essas chaves e ignorá-lo do roposítório. Também criei um arquivo de exemplo para essas constantes (config.js.sample), assim quem olhar o repositório pode serguir o está acontecendo. Isso é uma forma provisória e manter, mas pra frente esse arquivo de configuração deve ser um .env que conterá variáveis de ambiente (_envirioment variables_).
 
 ### Integrando Firebase ao portal P5js
 
-1 Passos para fazer o firebase funcionar
+A integração começa com acriação de um projeto firebase, no caso do javascript o firebase entrega as linhas de código para integração do sdk na página html e um objeto com suas credenciais para conexão:
+
+```
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+  <!-- Add SDKs for Firebase products that you want to use
+  https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-analytics.js"></script>
+
+```
+```
+  var firebaseConfig = {
+    apiKey: APIKEY,
+    authDomain: AUTHDOMAIN,
+    databaseURL: DATABASEURL,
+    projectId: PROJECTID,
+    storageBucket: STORAGEBUCKET,
+    messagingSenderId: MESSAGINGSENDERID,
+    appId: APPID,
+    measurementId: MEASUREMENTID
+  };
+  // NOTE: Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+```
+A conexão é feita passando o objeto, _firebaseConfig_, de configuração de crendenciais para a função firebease.initializeApp() que cria e instancia uma instância do aplicativo referente no firebase (https://firebase.google.com/docs/reference/js/firebase#initializeapp). Chamando o método database() dessa instancia, recebemos o objeto completo do banco de dados.
+
+```
+  firebase.initializeApp(firebaseConfig);
+  dbService = firebase.database();
+```
+Agora precisamos decidir a refernecia onde trabalharemos dentro do banco de dados. Isso é acessível atraves do método ref(), que por padrão aponta prá raíz do banco de dados. Mas pode receber uma _string_ como parâmetro, e foi como fiz, para apontar para um nó específico na arvore onde deseja executar as suas ações.
+```
+  base = dbService.ref('projs');
+  base.once('value', gotData, gotErr);
+```
+Uma vez que tenho um objeto que aponta exatemente para onde eu quero mexer no banco de dados, falta dizer o que deve ser feito nesse objeto:
+```
+  //a linha abaixo insere valores de um array no banco de dados
+  base.push(entrada[i]);
+
+  //a linha abaixo resgata os valores do banco de dados
+  base.once('value', gotData, gotErr);
+```
+Aqui vou focar apenas no método once(), falarei sobre push() quando explicar as adaptações que a sketch.js sofreu para incluir o firebase.
+
+Bem, o método once() ouve o banco de dados apenas uma vez, ou seja, deverá ser explicitamente chamada toda vez que quisermos que ela execute. Falo sobre essa particulcaridade pois existe o método on(), que fica ativamente ouvindo qualquer alteração no banco de dados até que seja explicitamente parada pelo método off(), e essa foi a primeira função que descobri. Como meu desejo é que a página seja criada apenas quando carregada e não seja atualizada em tempo real, o que é um dos maiores pontos de venda do firebase, o método once() economiza que eu tenha que explicitamente desligar a comunicação com o banco de dados. E vindo de alguém que aprendeu banco de dados com SQL, é mais natural para mim evitar consultas desnecessárias no banco de dados.
+
+Esse método once recebe uma string que descreve o evento pelo qual ouvir, nesse caso _"value"_, e duas funções, sendo a primeira função responsável por trabalhar os dados recuperados e a segunda deve lidar com eventuais erros.
 
 #### Adaptação e integração do db a galeria
 
 1 O que foi mudado para que o firebase funcione como fonte de dados na galeria
+  - Onde cada coisa acontece agora se comparado com o código original;
+  - Populando o banco de dados com os base.json, além da primeira população também e será um pedaço de código útil caso eu chegue a criar o formulário de subscrição (pensar em como sinalizar que um projeto foi ou não aceito).
 
 # Galeria Dinâmica
 

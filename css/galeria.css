@@ -53,10 +53,12 @@ header nav {
   justify-self: right;
   margin: 20px;
 }
+
 header h1 {
   grid-area: titulo;
   margin: 10vh 5vw;
 }
+
 header p {
   grid-area: coment;
   margin: 0 5vw 5vh 5vw;
@@ -73,12 +75,16 @@ main {
   margin: 2vw;
   padding: 2vw;
   border: solid 2px #ed225d;
-  border-radius: 15px;
   display: grid;
-  grid-template-areas:
+  grid-template-areas:   
     "titulo canvas"
     "coments canvas"
     "autor canvas";
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
 }
 
 .painel h2 {
@@ -133,7 +139,7 @@ a {
   color: #ed225d;
 }
 
-#pagina :nth-of-type(2n) {
+#pagina .painel:nth-of-type(odd) {
   /* https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-of-type */
   background-color: rgb(238, 233, 233);
 }
