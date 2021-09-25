@@ -2,6 +2,14 @@
 
 Projeto de TCC, criação de um portal de divulgação da biblioteca e projetos P5js.
 
+## verPureJS
+
+Essa é a nova versão do projeto. Aqui quero fazer alguns ajustes para o novo foco que tenho e implementar algumas dicas que o orientador me passou.
+
+- Tirar a dependêncica P5.js da galeria para melhorar a performance:
+  - Implementação será com javascript puro;
+  - Melhorar performance focando em que itens estão ou não na tela, desligar animações fora de foco;
+
 # Cronograma
 
 25/04-01/05
