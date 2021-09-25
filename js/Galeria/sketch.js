@@ -14,7 +14,7 @@ function preload() {
   // entrada = loadJSON('../json/base.json');
   // let i = 0;
   // while(entrada[i]){
-  //   base.push(entrada[i]);
+  //   base.push(entrada[i]); 
   //   i++;
   // }
 }

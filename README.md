@@ -38,8 +38,8 @@ Projeto de TCC, criação de um portal de divulgação da biblioteca e projetos 
 - [x] Fazer a ligação com FireBase:
   - [x] Criar e pupular projeto no firebase;
   - [x] Integrar ao portal;
-  - [ ] Criar arquivo config.js para esconder as variáveis do servidor do github;
-  - [ ] Descobrir como fazer a galeria não atualizar automaticamente;
+  - [x] Criar arquivo config.js para esconder as variáveis do servidor do github;
+  - [x] Descobrir como fazer a galeria não atualizar automaticamente;
 - [ ] Colocar tudo que arquivo principal;
 - [ ] Enviar relatório ao professor:
   - [ ] O que foi feito até o memento;
@@ -159,7 +159,7 @@ Ambos serviços oferencem uso gratuito até algum nível, e plano pago por uso. 
 
 #### Regras Firabase
 
-1 testar fechamento de regras e como isso interfere na galeria
+TODO: 1 testar fechamento de regras e como isso interfere na galeria
 
 #### Variaveis de configuração
 
@@ -178,6 +178,7 @@ A integração começa com acriação de um projeto firebase, no caso do javascr
   <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-analytics.js"></script>
 
 ```
+
 ```
   var firebaseConfig = {
     apiKey: APIKEY,
@@ -193,18 +194,23 @@ A integração começa com acriação de um projeto firebase, no caso do javascr
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
 ```
+
 A conexão é feita passando o objeto, _firebaseConfig_, de configuração de crendenciais para a função firebease.initializeApp() que cria e instancia uma instância do aplicativo referente no firebase (https://firebase.google.com/docs/reference/js/firebase#initializeapp). Chamando o método database() dessa instancia, recebemos o objeto completo do banco de dados.
 
 ```
   firebase.initializeApp(firebaseConfig);
   dbService = firebase.database();
 ```
+
 Agora precisamos decidir a refernecia onde trabalharemos dentro do banco de dados. Isso é acessível atraves do método ref(), que por padrão aponta prá raíz do banco de dados. Mas pode receber uma _string_ como parâmetro, e foi como fiz, para apontar para um nó específico na arvore onde deseja executar as suas ações.
+
 ```
   base = dbService.ref('projs');
   base.once('value', gotData, gotErr);
 ```
+
 Uma vez que tenho um objeto que aponta exatemente para onde eu quero mexer no banco de dados, falta dizer o que deve ser feito nesse objeto:
+
 ```
   //a linha abaixo insere valores de um array no banco de dados
   base.push(entrada[i]);
@@ -212,6 +218,7 @@ Uma vez que tenho um objeto que aponta exatemente para onde eu quero mexer no ba
   //a linha abaixo resgata os valores do banco de dados
   base.once('value', gotData, gotErr);
 ```
+
 Aqui vou focar apenas no método once(), falarei sobre push() quando explicar as adaptações que a sketch.js sofreu para incluir o firebase.
 
 Bem, o método once() ouve o banco de dados apenas uma vez, ou seja, deverá ser explicitamente chamada toda vez que quisermos que ela execute. Falo sobre essa particulcaridade pois existe o método on(), que fica ativamente ouvindo qualquer alteração no banco de dados até que seja explicitamente parada pelo método off(), e essa foi a primeira função que descobri. Como meu desejo é que a página seja criada apenas quando carregada e não seja atualizada em tempo real, o que é um dos maiores pontos de venda do firebase, o método once() economiza que eu tenha que explicitamente desligar a comunicação com o banco de dados. E vindo de alguém que aprendeu banco de dados com SQL, é mais natural para mim evitar consultas desnecessárias no banco de dados.
@@ -220,9 +227,10 @@ Esse método once recebe uma string que descreve o evento pelo qual ouvir, nesse
 
 #### Adaptação e integração do db a galeria
 
-1 O que foi mudado para que o firebase funcione como fonte de dados na galeria
-  - Onde cada coisa acontece agora se comparado com o código original;
-  - Populando o banco de dados com os base.json, além da primeira população também e será um pedaço de código útil caso eu chegue a criar o formulário de subscrição (pensar em como sinalizar que um projeto foi ou não aceito).
+TODO: 1 O que foi mudado para que o firebase funcione como fonte de dados na galeria
+
+- Onde cada coisa acontece agora se comparado com o código original;
+- DONE: Populando o banco de dados com os base.json, além da primeira população também e será um pedaço de código útil caso eu chegue a criar o formulário de subscrição (pensar em como sinalizar que um projeto foi ou não aceito).
 
 # Galeria Dinâmica
 
